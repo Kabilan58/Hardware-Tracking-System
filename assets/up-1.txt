@@ -1,0 +1,27 @@
+// Handle update
+if (isset($_POST['update'])) {
+    $uid = $_POST['uu'];
+    $uname = $_POST['u1']; $gender = $_POST['u2']; $addr = $_POST['u3']; $city = $_POST['u4']; 
+    $qual = $_POST['u5']; $mobile = $_POST['u6']; $dept = $_POST['u7']; $usertype = $_POST['u8'];
+    $username = $_POST['u9']; $password = $_POST['u10']; $secq = $_POST['u11']; $seca = $_POST['u12'];
+
+$sql="UPDATE newuser SET uname=?,gender=?,addr=?,city=?,
+qual=?,mobile=?,dept=?,usertype=?,username=?,password=?,
+secq=?,seca=? WHERE uid=?";
+$stmt=mysqli_prepare($conn,$sql);
+mysqli_stmt_bind_param($stmt, "ssssssssssssi",$uname,
+$gender,$addr,$city,$qual,$mobile,$dept,$usertype,$username,
+$password,$secq,$seca,$uid);
+if(mysqli_stmt_execute($stmt)) {
+//Set a session variable to indicate a successful update
+$_SESSION['status']="User updated successfully!";
+$_SESSION['status_code']="success";
+}else{
+//Set an error message if the update fails
+$_SESSION['status']="Update failed:".mysqli_error($conn);
+$_SESSION['status_code']="error";
+}
+mysqli_stmt_close($stmt);
+header('Location:newuser.php');
+exit;
+}

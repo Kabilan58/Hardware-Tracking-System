@@ -1,0 +1,192 @@
+/* ===== Global Reset ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== Page Gradients ===== */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  color: black;
+}
+
+/* Unique gradients per page */
+
+body.amcentry { background: linear-gradient(135deg, #4facfe, #8e44ad); }
+body.deptcreation { background: linear-gradient(135deg, #11998e, #38ef7d); }
+body.loggedcomplaints { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+body.loggedreports { background: linear-gradient(135deg, #ff758c, #8e44ad); }
+body.newpc { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+body.newuser { background: linear-gradient(135deg, #43cea2, #185a9d); }
+
+
+body.rectifiedcomplaints { background: linear-gradient(135deg, #f7971e, #ff512f); }
+body.reportingproblem { background: linear-gradient(135deg, #2c3e50, #3498db); }
+body.systemallotment { background: linear-gradient(135deg, #6a11cb, #2575fc); }
+body.usercomplaints { background: linear-gradient(135deg, #fceabb, #f8b500); }
+body.admin_needhelp { background: linear-gradient(135deg, #f8b500, #2497a8fb); }
+body.needhelp { background: linear-gradient(135deg, #ee957a, #e4400f); }
+
+/* ===== Card-style Container ===== */
+
+table, form {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+/* ===== Modern Table ===== */
+
+table {
+  border-collapse: collapse;
+  width: 95%;
+  max-width: 1000px;
+  overflow: hidden;
+}
+
+table th, table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+table th {
+  background: rgba(255,255,255,0.2);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table tr:nth-child(even) {
+  background: rgba(255,255,255,0.08);
+}
+
+table tr:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ===== Modern Form ===== */
+
+form {
+  width: 90%;
+  max-width: 600px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255,255,255,0.15);
+  color: black;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+}
+
+/* ===== Modern Buttons ===== */
+
+button, input[type="submit"], input[type="button"] {
+  background: rgba(255,255,255,0.2);
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+  background: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive Fix ===== */
+
+@media (max-width: 768px) {
+  table, form {
+    width: 100%;
+    padding: 15px;
+  }
+
+  table th, table td {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+
+/* === Modern Responsive Fixes === */
+
+/* Card-style container */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px;
+    max-width: 95%;
+    overflow-x: auto;
+}
+
+/* Responsive table */
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.card table th, 
+.card table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+/* Form styling */
+.card form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card form input,
+.card form select,
+.card form textarea {
+    width: 90%;
+    max-width: 600px;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Remove horizontal scroll */
+body {
+    overflow-x: hidden;
+}

@@ -1,0 +1,150 @@
+
+:root{
+  --bg1:#0f172a; /* slate-900 */
+  --bg2:#1e293b; /* slate-800 */
+  --card:#0b1220;
+  --text:#e5e7eb; /* gray-200 */
+  --muted:#94a3b8;
+  --accent:#2563eb; /* blue-600 */
+  --accent-2:#22d3ee; /* cyan-400 */
+  --success:#10b981;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  height:100%;
+}
+
+body{
+  margin:0;
+  font-family: Inter, Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(34,211,238,0.20), transparent 60%),
+    radial-gradient(1200px 600px at 120% 10%, rgba(37,99,235,0.25), transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+  background-attachment: fixed;
+}
+
+.app-shell{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  min-height:100vh;
+}
+
+.sidebar{
+  position:sticky; top:0;
+  height:100vh;
+  padding:26px 18px;
+  background:rgba(3,7,18,0.55);
+  backdrop-filter: blur(10px);
+  border-right:1px solid rgba(148,163,184,.15);
+}
+
+.brand{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 10px; margin-bottom:14px;
+}
+.brand .logo{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: var(--shadow);
+}
+.brand h1{
+  font-size:18px; letter-spacing:.3px; margin:0;
+  font-weight:700;
+}
+
+.user-badge{
+  border:1px solid rgba(148,163,184,.15);
+  background: rgba(2,6,23,0.35);
+  border-radius: var(--radius);
+  padding:12px 14px;
+  margin:10px 6px 18px;
+  color:var(--muted);
+  font-size:13px;
+}
+.user-badge b{ color:var(--text); }
+
+.nav{
+  display:flex; flex-direction:column; gap:10px;
+  margin-top:8px;
+}
+
+.nav a{
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none; color:var(--text);
+  padding:12px 14px;
+  border:1px solid rgba(148,163,184,.15);
+  background:linear-gradient(180deg, rgba(30,41,59,.55), rgba(2,6,23,.35));
+  border-radius: var(--radius);
+  transition: transform .12s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.nav a .ico{ width:20px; text-align:center; opacity:.85 }
+.nav a:hover{
+  transform: translateY(-1px);
+  border-color: rgba(34,211,238,.55);
+  box-shadow: 0 6px 22px rgba(34,211,238,.08);
+}
+.nav a.logout{ border-color: rgba(239,68,68,.35) }
+.nav a.logout:hover{ border-color: rgba(239,68,68,.65) }
+
+.main{
+  padding:30px clamp(18px, 4vw, 44px);
+}
+
+.header{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  margin-bottom:24px;
+}
+.h-title{ font-size:28px; font-weight:800; letter-spacing:.3px }
+.h-sub{ color:var(--muted); font-size:14px }
+
+.grid{
+  display:grid; gap:18px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card{
+  border:1px solid rgba(148,163,184,.15);
+  background:linear-gradient(180deg, rgba(2,6,23,.55), rgba(2,6,23,.25));
+  border-radius: var(--radius);
+  padding:18px;
+  box-shadow: var(--shadow);
+  min-height:120px;
+}
+
+.card h3{ margin:2px 0 10px; font-size:16px }
+.card p{ margin:0; color:var(--muted); font-size:13px; line-height:1.45 }
+
+.cta{
+  display:inline-block; margin-top:12px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  border:none; color:white; font-weight:700;
+  padding:10px 14px; border-radius:12px;
+  text-decoration:none; box-shadow: 0 8px 20px rgba(37,99,235,.35);
+}
+
+.hero{
+  border:1px dashed rgba(148,163,184,.22);
+  border-radius: var(--radius);
+  padding:26px; margin-bottom:22px;
+  background:linear-gradient(180deg, rgba(15,23,42,.45), rgba(2,6,23,.15));
+}
+.hero h2{ font-size:36px; margin:0 0 6px }
+.hero p{ color:var(--muted); margin:0 }
+
+.footer{
+  margin-top:24px; color:var(--muted); font-size:12px; opacity:.8
+}
+
+/* Responsive */
+@media (max-width: 880px){
+  .app-shell{ grid-template-columns: 1fr }
+  .sidebar{ position:relative; height:auto; border-right:none; border-bottom:1px solid rgba(148,163,184,.15); border-radius:0 0 var(--radius) var(--radius) }
+}

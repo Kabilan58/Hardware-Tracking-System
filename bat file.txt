@@ -1,0 +1,71 @@
+@echo off
+title HWTracking Project Auto Starter (Admin & Minimized)
+color 0A
+
+:: =====================================================
+:: 1️⃣ Admin check
+:: =====================================================
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    powershell -Command "Start-Process '%~f0' -Verb RunAs"
+    exit /b
+)
+
+:: =====================================================
+:: 2️⃣ Start XAMPP minimized
+:: =====================================================
+cd /d "C:\xampp"
+powershell -Command "Start-Process 'xampp-control.exe' -WindowStyle Minimized -Verb RunAs"
+timeout /t 3 >nul
+
+:: =====================================================
+:: 3️⃣ Start Apache service
+:: =====================================================
+sc query "Apache2.4" | find "RUNNING" >nul
+if errorlevel 1 net start Apache2.4 >nul
+
+:: =====================================================
+:: 4️⃣ Start MySQL service
+:: =====================================================
+sc query "MySQL" | find "RUNNING" >nul
+if errorlevel 1 net start MySQL >nul
+
+:: =====================================================
+:: 5️⃣ Wait until both services are running
+:: =====================================================
+:WaitServices
+sc query "Apache2.4" | find "RUNNING" >nul
+set ApacheStatus=%errorlevel%
+sc query "MySQL" | find "RUNNING" >nul
+set MySQLStatus=%errorlevel%
+
+if %ApacheStatus% neq 0 (
+    timeout /t 1 >nul
+    goto WaitServices
+)
+
+if %MySQLStatus% neq 0 (
+    timeout /t 1 >nul
+    goto WaitServices
+)
+
+:: =====================================================
+:: 6️⃣ Open Chrome project
+:: =====================================================
+if exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
+    start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" --new-window "http://localhost/hwtracking/"
+) else if exist "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" (
+    start "" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --new-window "http://localhost/hwtracking/"
+) else (
+    start "" "http://localhost/hwtracking/"
+)
+
+:: =====================================================
+:: 7️⃣ Show single MessageBox popup with custom sound
+:: =====================================================
+powershell -Command ^
+"Add-Type -AssemblyName PresentationFramework; ^
+[System.Media.SoundPlayer]::new('C:\xampp\htdocs\hwtracking\ready.wav').PlaySync(); ^
+[System.Windows.MessageBox]::Show('✅ HWTracking Project Ready!`nApache & MySQL running.`nProject opened in Chrome.','HWTracking Launcher','OK','Information')"
+
+exit

@@ -1,0 +1,53 @@
+//Handleupdate
+if (isset($_POST['update'])) {
+
+$uid=$_POST['uu'];
+$uname=$_POST['u1'];$gender=$_POST['u2'];$addr=$_POST['u3'];$city=$_POST['u4'];
+$qual=$_POST['u5'];$mobile=$_POST['u6'];$dept=$_POST['u7'];
+$usertype=$_POST['u8'];
+$username=$_POST['u9'];$password=$_POST['u10'];$secq=$_POST['u11'];$seca=$_POST['u12'];
+
+$sql="UPDATE newuser SET uname='$uname',gender='$gender',
+addr='$addr',city='$city',
+qual='$qual',mobile='$mobile',dept='$dept',
+usertype='$usertype',username='$username',
+password='$password',secq='$secq',seca='$seca' WHERE uid=$uid";
+
+if(mysqli_query($conn,$sql)) {
+echo"<script src='assets/js/sweetalert2.all.min.js'></script>
+<script>
+Swal.fire({
+icon: 'success',
+title: 'Updated!',
+text: 'User updated successfully.',
+confirmButtonText: 'OK'
+}).then(()=>{
+window.location.href='newuser.php';
+});
+setTimeout(()=>{
+window.location.href='newuser.php';
+},5000);
+</script>
+";
+
+}else{
+$error=addslashes(mysqli_error($conn));
+echo"
+<script
+src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+<script>
+Swal.fire({
+icon: 'error',
+title: 'Error!',
+text: 'Updatefailed:$error',
+confirmButtonText: 'OK'
+}).then(()=>{
+window.location.href='newuser.php';
+});
+setTimeout(()=>{
+window.location.href='newuser.php';
+},5000);
+</script>
+";
+}
+}

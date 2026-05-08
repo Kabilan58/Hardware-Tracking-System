@@ -1,0 +1,108 @@
+/* forms-below.css */
+/* Fixes only for newuser.php, systemallotment.php, and amcentry.php */
+
+/* Make the table full width */
+.forms-below .card table, form {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+.forms-below .card table {
+	border-collapse: collapse;
+	  width: 100%;
+	  max-width: 1000px;
+	  overflow: hidden;
+    margin: 0 auto !important;
+    table-layout: auto;
+}
+
+.forms-below .card table th, table td {
+  padding: 6px 0.5px;
+  text-align: center;
+}
+
+.forms-below .card table th {
+  background: rgba(255,255,255,0.2);
+  font-weight: bold;
+  text-transform: uppercase;
+  
+}
+
+.forms-below .card table tr:nth-child(even) {
+  background: rgba(255,255,255,0.08);
+}
+
+.forms-below .card table tr:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Move the form below and center it */
+.forms-below form {
+    display: block !important;
+    clear: both !important;
+    margin: 24px auto !important;
+    max-width: 760px !important;
+    text-align: center !important;
+}
+
+.forms-below form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Inputs/Selects full width inside form */
+.forms-below form input,
+.forms-below form select,
+.forms-below form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255,255,255,0.15);
+  color: black;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.forms-below form input:focus, form select:focus, form textarea:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+}
+
+/* Ensure card containers expand properly */
+.forms-below .card {
+    display: block !important;
+    width: 100% !important;
+    overflow: visible !important;
+}
+
+.forms-below button, input[type="submit"], input[type="button"] {
+  background: rgba(255,255,255,0.2);
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.forms-below button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+  background: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  table, form {
+    width: 100%;
+    padding: 15px;
+  }
