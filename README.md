@@ -61,4 +61,4 @@ A comprehensive web-based solution for managing hardware inventory, tracking mai
 - `images/`: UI assets and hardware-related imagery.
 
 ---
-*Developed with ❤️ for streamlined hardware management.*
+*Developed by KABILAN T with ❤️ for streamlined hardware management.*
